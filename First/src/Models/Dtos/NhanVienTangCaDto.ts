@@ -1,7 +1,7 @@
 export class NhanVienTangCa{
     Id:string|undefined;
     NhanVienId:string|undefined;
-    NhanVien:object|undefined;
+    NhanVien:string|undefined;
     TangCaId:string|undefined;
-    TangCa:object|undefined;
+    TangCa:string|undefined;
 }

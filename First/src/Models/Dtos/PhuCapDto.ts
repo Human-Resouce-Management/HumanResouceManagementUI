@@ -3,5 +3,5 @@ export class PhuCap{
     ThuongCoDinh:boolean|undefined;
     SoTien: number|undefined;
     NhanVienId:string|undefined;
-    NhanVien:object|undefined;
+    NhanVien:string|undefined;
 }

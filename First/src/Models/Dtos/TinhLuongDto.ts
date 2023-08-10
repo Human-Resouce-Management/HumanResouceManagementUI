@@ -4,6 +4,6 @@ export class TinhLuong{
     MucLuong:number|undefined;
     CacKhoangTru:number|undefined;
     NhanVienId:string|undefined;
-    NhanVien:object|undefined;
+    NhanVien:string|undefined;
     CacKhoangThem:number|undefined;
 }

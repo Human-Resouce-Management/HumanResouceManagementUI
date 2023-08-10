@@ -1,7 +1,7 @@
 export class TangLuong{
     Id:string|undefined;
     NhanVienId:string|undefined;
-    NhanVien:object|undefined;
+    NhanVien:string|undefined;
     NgayCapNhat:Date|undefined;
     SoTien:number|undefined;
     HeSoCu:number|undefined;
