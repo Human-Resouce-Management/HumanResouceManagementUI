@@ -6,7 +6,7 @@ import 'element-plus/dist/index.css'
 <router-view/>
 <template>
     <el-row :gutter="20">
-      <el-col :span="6"><div class="grid-content ep-bg-purple" />Xin</el-col>
+      <el-col :span="6"><div class="grid-content ep-bg-purple1" />Xin</el-col>
       <el-col :span="6"><div class="grid-content ep-bg-purple" />Chao</el-col>
       <el-col :span="6"><div class="grid-content ep-bg-purple" />Ca</el-col>
       <el-col :span="6"><div class="grid-content ep-bg-purple" />Nha</el-col>
@@ -28,5 +28,8 @@ import 'element-plus/dist/index.css'
     border-radius: 4px;
     min-height: 36px;
   }
+  .ep-bg-purple1{
+background-color :red;
+}
   </style>
   
