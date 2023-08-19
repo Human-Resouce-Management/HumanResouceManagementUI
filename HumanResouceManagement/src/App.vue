@@ -2,10 +2,11 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import layout1 from './components/layout/layout1.vue'
+import login from './components/LoginView/login.vue'
 </script>
 
 <template>
-  <!-- <header>
+  <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
@@ -18,8 +19,7 @@ import layout1 from './components/layout/layout1.vue'
     </div>
   </header>
 
-  <RouterView /> -->
-  <layout1></layout1>
+  <RouterView />
 </template>
 
 <style scoped>
