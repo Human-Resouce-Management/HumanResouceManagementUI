@@ -43,10 +43,14 @@ const state = reactive<LoginViewModel>({
 });
 const login = async () => {
   console.log(state);
+  alert('Name: '+state.userName+ '\n PassWord: '+ state.password)
   const loginResult = await handleLogin(state);
   console.log("logresult:" + loginResult);
   if (loginResult.isSuccess)
+  {
     window.location.href = '/';
+  }
+    
   else
     _toast.success(loginResult.message);
 }
