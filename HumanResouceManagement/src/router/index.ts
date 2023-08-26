@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import layout1 from '../components/layout/layout1.vue'
+import layout2 from '../components/layout/layout2.vue'
 import login from '../components/LoginView/login.vue'
-
+// import RegisterView from '../components/LoginView/RegisterView.vue'
 import Cookies from 'js-cookie';
-import HomeView from '../views/AboutView.vue'
 import LoginView from '../views/Auth/LoginView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,23 +15,36 @@ const router = createRouter({
       children: [
         {
           path: '',
-          component: HomeView,
+          component: login,
         },
         // Other routes using default layout...
       ],
     },
     {
       path: '/Auth',
-      component: login,
+      component: layout2,
       meta: { requiresAuth: true }, 
       children: [
         {
           path: '',
-          component: LoginView,
+          component:login,
         },
         // Other routes using default layout...
       ],
     },
+    // {
+    //   path: '/Auth',
+    //   component: login,
+    //   meta: { requiresAuth: true }, 
+    //   children: [
+    //     {
+    //       path: '',
+    //       component: LoginView,
+    //     },
+    //     // Other routes using default layout...
+    //   ],
+    // },
+    
   ]
 })
 

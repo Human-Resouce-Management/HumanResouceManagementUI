@@ -1,7 +1,7 @@
 // @ts-ignore
-import { RegisterViewModel } from '../models/RegisterViewModel.ts'
+import { RegisterViewModel } from '../../Models/Dtos/RegisterViewModel'
 // @ts-ignore
-import { AppResponse } from '../models/AppResponse.ts'
+import { AppResponse } from '../../Models/Dtos/AppResponse'
 // @ts-ignore
 import { axiosInstance } from "./axiosConfig.ts"
 
