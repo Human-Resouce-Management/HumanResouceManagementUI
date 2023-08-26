@@ -32,13 +32,13 @@
 import { Calendar, Search, User, Key } from '@element-plus/icons-vue'
 import { reactive, ref } from 'vue';
 // @ts-ignore
-import { RegisterViewModel } from '../../Models/RegisterViewModel.ts'
+import { RegisterViewModel } from '../../Models/Dtos/RegisterViewModel'
 
 // @ts-ignore
-// import { handleRegister } from "../../Services/RegisterService.ts"
+// import { handleRegister } from "../../Models/Dtos/RegisterViewModel"
 // import { useToast } from "vue-toastification";
 
-const _toast = useToast();
+// const _toast = useToast();
 const state = reactive<RegisterViewModel>({
     userName: '',
     password: '',
