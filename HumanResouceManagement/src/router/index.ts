@@ -16,7 +16,7 @@ const router = createRouter({
       children: [
         {
           path: '',
-          component: login,
+          component: LoginView,
         },
         // Other routes using default layout...
       ],
