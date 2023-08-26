@@ -1,13 +1,13 @@
 // @ts-ignore
-import { LoginViewModel } from '../../Models/Dtos/LoginViewModel'
+import { LoginViewModel } from '../Models/LoginViewModel'
 // @ts-ignore
-import { AppResponse } from '../../Models/Dtos/AppResponse'
+import { AppResponse } from '../Models/AppResponse'
 // @ts-ignore
 import { axiosInstance } from "./axiosConfig.ts"
 
 import Cookies from 'js-cookie';
 import { reactive } from 'vue';
-const loginUrl = "account/login";
+const loginUrl = "Account/login";
 
 export const handleLogin = async (model: LoginViewModel): Promise<AppResponse<string>> => {
 
@@ -32,11 +32,10 @@ export const handleLogin = async (model: LoginViewModel): Promise<AppResponse<st
             console.log(resust.message);
 
         }
-    } catch (error) {
+    } catch (error ) {
         console.error(error);
 
     }
     return resust;
 
 }
-

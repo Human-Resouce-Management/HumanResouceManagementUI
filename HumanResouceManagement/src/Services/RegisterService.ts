@@ -1,9 +1,9 @@
 // @ts-ignore
-import { RegisterViewModel } from '../../Models/Dtos/RegisterViewModel'
+import { RegisterViewModel } from '../Models/Dtos/RegisterViewModel'
 // @ts-ignore
-import { AppResponse } from '../../Models/Dtos/AppResponse'
+import { AppResponse } from '../Models/AppResponse'
 // @ts-ignore
-import { axiosInstance } from "./axiosConfig.ts"
+import { axiosInstance } from "./axiosConfig"
 
 import Cookies from 'js-cookie';
 import { reactive } from 'vue';

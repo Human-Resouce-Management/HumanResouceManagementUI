@@ -35,7 +35,7 @@ import { reactive, ref } from 'vue';
 import { RegisterViewModel } from '../../Models/Dtos/RegisterViewModel'
 
 // @ts-ignore
-// import { handleRegister } from "../../Models/Dtos/RegisterViewModel"
+ import { handleRegister } from "../../Services/LoginService"
 // import { useToast } from "vue-toastification";
 
 // const _toast = useToast();
@@ -52,8 +52,8 @@ const register = async () => {
     if (loginResult.isSuccess) {
         window.location.href = '/';
     }
-    else
-        _toast.success(loginResult.message);
+    // else
+    //     _toast.success(loginResult.message);
 }
 </script>
   

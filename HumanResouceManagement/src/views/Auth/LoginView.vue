@@ -6,16 +6,16 @@
       <div class="grid-content ep-bg-purple">
         <el-form ref="ruleFormRef" :model="state" status-icon label-width="px" class="demo-ruleForm">
           <el-form-item label="" prop="username">
-            <el-input v-model="state.userName" placeholder="User name" :prefix-icon="User" />
+            <el-input v-model="state.UserName" placeholder="User name" :prefix-icon="User" />
           </el-form-item>
           <el-form-item label="" prop="pass">
-            <el-input v-model="state.password" type="password" width="300px" autocomplete="off" placeholder="password"
+            <el-input v-model="state.Password" type="password" width="300px" autocomplete="off" placeholder="password"
               :prefix-icon="Key" />
           </el-form-item>
 
 
           <el-form-item>
-            <el-button type="primary" @click="login()">Submit</el-button>
+            <el-button type="primary" @click="submitForm()">Submit</el-button>
           </el-form-item>
 
         </el-form>
@@ -31,29 +31,28 @@ import { reactive, ref } from 'vue';
 import { LoginViewModel } from '../../Models/Dtos/LoginViewModel'
 
 // @ts-ignore
-// import { handleLogin } from "../../Services/LoginService.ts"
+ import { handleLogin } from '../../Services/LoginService'
 // import { useToast } from "vue-toastification";
 
 // const _toast = useToast();
 const state = reactive<LoginViewModel>({
-  userName: '',
-  password: '',
-  email: '',
-  Role: ''
+  Id: '',
+    UserName: '',
+    Password: '',
+    Email: '',
+    Role: null,
+    LockoutEnabled: false,
 });
-const login = async () => {
-  console.log(state);
-  alert('Name: '+state.userName+ '\n PassWord: '+ state.password)
-  const loginResult = await handleLogin(state);
-  console.log("logresult:" + loginResult);
-  if (loginResult.isSuccess)
-  {
-    window.location.href = '/';
+const submitForm = async () => {
+    console.log(state);
+    // state.Email = state.UserName
+    const loginResult = await handleLogin(state);
+    console.log("logresult:" + loginResult);
+    if (loginResult.isSuccess)
+      window.location.href = '/';
+    // else
+    //   _toast.success(loginResult.message);
   }
-    
-  else
-    _toast.success(loginResult.message);
-}
 </script>
   
 <style>
