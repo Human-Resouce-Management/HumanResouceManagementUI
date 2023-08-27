@@ -31,7 +31,7 @@ import { reactive, ref } from 'vue';
 import { LoginViewModel } from '../../Models/Dtos/LoginViewModel'
 
 // @ts-ignore
-//  import { handleLogin } from '../../Services/LoginService.ts'
+ import { handleLogin } from '../../Services/LoginService.ts'
 // import { useToast } from "vue-toastification";
 
 // const _toast = useToast();

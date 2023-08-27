@@ -35,7 +35,7 @@ import { reactive, ref } from 'vue';
 import { RegisterViewModel } from '../../Models/Dtos/RegisterViewModel'
 
 // @ts-ignore
-//  import { handleRegister } from "../../Services/RegisterService.ts"
+ import { handleRegister } from "../../Services/RegisterService.ts"
 // import { useToast } from "vue-toastification";
 
 // const _toast = useToast();

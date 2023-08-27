@@ -1,7 +1,7 @@
 
-export type RegisterViewModel ={
-    userName: string,
-    password: string,
-    passwordRetype: string,
+export class RegisterViewModel {
+    userName: string;
+    password: string;
+    passwordRetype: string;
     email: string
 }
