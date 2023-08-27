@@ -7,7 +7,7 @@ import { axiosInstance } from "./axiosConfig"
 
 import Cookies from 'js-cookie';
 import { reactive } from 'vue';
-const registerUrl = "account/register";
+const registerUrl = "Account/register";
 
 export const handleRegister = async (model: RegisterViewModel): Promise<AppResponse<string>> => {
 

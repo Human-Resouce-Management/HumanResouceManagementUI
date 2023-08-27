@@ -4,8 +4,8 @@
         <el-col :span="24" class="login-col">
             <div class="grid-content ep-bg-purple">
                 <el-form ref="ruleFormRef" :model="state" status-icon label-width="px" class="demo-ruleForm">
-                    <el-form-item label="" prop="username">
-                        <el-input v-model="state.userName" placeholder="User name" :prefix-icon="User" />
+                    <el-form-item label="" prop="email">
+                        <el-input v-model="state.email" placeholder="email" :prefix-icon="User" />
                     </el-form-item>
                     <el-form-item label="" prop="pass">
                         <el-input v-model="state.password" type="password" width="300px" autocomplete="off"
