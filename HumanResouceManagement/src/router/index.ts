@@ -19,18 +19,18 @@ const router = createRouter({
         // Other routes using default layout...
       ],
     },
-    // {
-    //   path: '/Auth',
-    //   component: layout1,
-    //   meta: { requiresAuth: true }, 
-    //   children: [
-    //     {
-    //       path: '',
-    //       component:RegisterView,
-    //     },
-    //     // Other routes using default layout...
-    //   ],
-    // },
+    {
+      path: '/Auth',
+      component: layout1,
+      meta: { requiresAuth: true }, 
+      children: [
+        {
+          path: '',
+          component:RegisterView,
+        },
+        // Other routes using default layout...
+      ],
+    },
     // {
     //   path: '/Auth',
     //   component: login,

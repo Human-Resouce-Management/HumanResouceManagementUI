@@ -1,5 +1,5 @@
 // @ts-ignore
-import { RegisterViewModel } from '../Models/Dtos/RegisterViewModel'
+import { RegisterViewModel } from '../Models/RegisterViewModel.ts'
 // @ts-ignore
 import { AppResponse } from '../Models/AppResponse'
 // @ts-ignore
