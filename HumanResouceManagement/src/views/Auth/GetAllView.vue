@@ -7,7 +7,7 @@
 <style>
 </style>
 <script setup lang="ts">
-import { GetAllModel} from "@/Models/GetAllModel.ts";
+
 import axios from "axios";
 import { onMounted } from 'vue';
 import { reactive, ref } from 'vue';
@@ -31,22 +31,23 @@ key:"email"
 },
 ]
 let data: any = ref([]);
-const fetchData = async (): Promise<GetAllModel[]> => {
-let data2 = [] as GetAllModel[];
-try {
-await axios
-  .get("https://localhost:7141/api/UserManagement/GetAll")
-  .then((respons) => (data2 = respons.data.data));
-console.log(data2);
-} catch (error) {
-// Handle any errors here
-console.error("Error:", error);
-}
-return data2;
+const fetchData = async (): Promise<any[]> => {
+  let data2 = [] as any[];
+  try {
+    await axios
+      .get("https://localhost:7141/api/UserManagement/GetAll")
+      .then((respons) => (data2 = respons.data.data));
+    console.log(data2);
+  } catch (error) {
+    // Handle any errors here
+    console.error("Error:", error);
+  }
+  return data2;
 };
 fetchData().then((result) => {
-data.value = result;
-console.log(data);
+  data.value = result;
+  console.log(data);
 });
+
 </script>
 
