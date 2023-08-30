@@ -9,15 +9,7 @@
 <script setup lang="ts">
 
 import axios from "axios";
-import { onMounted } from 'vue';
 import { reactive, ref } from 'vue';
-// @ts-ignore
-
-// @ts-ignore
-import { handleLogin } from '../../Services/AdminService'
-// import { useToast } from "vue-toastification";
-
-
 const columns = [
 {
 //   tiltle: "UserName",
