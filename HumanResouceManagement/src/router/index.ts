@@ -44,7 +44,6 @@ const router = createRouter({
         // Other routes using default layout...
       ],
     },
-    
   ]
 })
 
