@@ -16,6 +16,7 @@
 
           <el-form-item>
             <el-button type="primary" @click="submitForm()">Submit</el-button>
+            <el-button type="primary" @click="ForgotPassword()">Forgot password</el-button>
           </el-form-item>
 
         </el-form>
@@ -52,7 +53,7 @@ const submitForm = async () => {
       window.location.href = '/';
     // else
     //   _toast.success(loginResult.message);
-  }
+  } 
 </script>
   
 <style>
