@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import LoginView from '../views/Auth/LoginView.vue'
 import RegisterView from '../views/Auth/RegisterView.vue'
 import GetAllView from '../views/Auth/GetAllView.vue'
+import GetUser from '../views/Auth/GetUser.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -44,6 +45,12 @@ const router = createRouter({
         // Other routes using default layout...
       ],
     },
+     
+    {
+      path: "/GetAll/:Id",
+      component: GetUser,
+    },
+    
   ]
 })
 
