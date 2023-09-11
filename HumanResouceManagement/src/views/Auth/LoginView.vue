@@ -54,6 +54,10 @@ const submitForm = async () => {
     // else
     //   _toast.success(loginResult.message);
   } 
+  const ForgotPassword = () => {
+    // Thay thế `/forgot-password` bằng URL của trang bạn muốn chuyển đến
+    window.location.href = `/ResetPassword`;
+  }
 </script>
   
 <style>

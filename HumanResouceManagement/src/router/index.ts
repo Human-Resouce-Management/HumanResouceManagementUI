@@ -23,6 +23,10 @@ const router = createRouter({
       ],
     },
     {
+      path: "/:reset",
+      component: ResetPasswordView,
+    },
+    {
       path: '/Auth',
       component: layout1,
       meta: { requiresAuth: true }, 
@@ -50,18 +54,6 @@ const router = createRouter({
     {
       path: "/GetAll/:Id",
       component: GetUser,
-    },
-    {
-      path: '/Reset',
-      component: layout1,
-      meta: { requiresAuth: true }, 
-      children: [
-        {
-          path: '',
-          component:ResetPasswordView,
-        },
-        // Other routes using default layout...
-      ],
     },
   ]
 })
