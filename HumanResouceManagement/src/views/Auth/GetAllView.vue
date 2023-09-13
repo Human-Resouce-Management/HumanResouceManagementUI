@@ -10,6 +10,15 @@
         <!-- <el-button link type="primary" size="small">Edit</el-button> -->
       </template>
     </el-table-column>
+    <el-table-column  label="Deleteuser" width="100" >
+      <template #default="scopes">
+        <el-button link type="primary" size="small" @click="Deleteuser(scopes.row.id)"
+          >Delete</el-button
+        >
+        <!-- <el-button link type="primary" size="small">Edit</el-button> -->
+      </template>
+  </el-table-column>
+
   </el-table>
 </template>
 
@@ -68,6 +77,17 @@ function showDetails(userId:string) {
       window.location.href = `/GetAll/${userId}`;
     });
     }
-
+    async function Deleteuser(userId: any) {
+    try {
+        const response= await  axios.delete(`https://localhost:7141/api/UserManagement/${userId}`);
+    if (response.status === 200) {
+      alert('Da Xoa.');
+    } else {
+      alert('Đã xảy ra lỗi khi đặt lại mật khẩu. Vui lòng thử lại sau.');
+    }
+  } catch (error) {
+    console.log(error);
+    alert('Đã xảy ra lỗi khi đặt lại mật khẩu. Vui lòng thử lại sau.');
+  }}
 </script>
 
