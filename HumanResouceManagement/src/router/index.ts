@@ -9,6 +9,7 @@ import GetUser from '../views/Auth/GetUser.vue'
 import ResetPasswordView from '../views/Auth/ResetPasswordView.vue'
 import AdminView from '../views/Auth/AdminView.vue'
 import SearchUserView from '../views/Auth/SearchUserView.vue'
+import NhanVienView from '../views/Auth/NhanVienView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -77,6 +78,18 @@ const router = createRouter({
         {
           path: '',
           component: SearchUserView,
+        },
+        // Other routes using default layout...
+      ],
+    },
+    {
+      path: '/NhanVien',
+      component: layout1,
+      meta: { requiresAuth: true }, 
+      children: [
+        {
+          path: '',
+          component: NhanVienView,
         },
         // Other routes using default layout...
       ],

@@ -29,19 +29,19 @@
 import axios from "axios";
 import { reactive, ref } from 'vue';
 import {fetchData} from '../../Services/GetAllUserServices'
-const columns = [
-{
-//   tiltle: "UserName",
-dataIndex: "userName",
-key:"username"
-},
-{
-//   tiltle: "Email",
-dataIndex: "email",
-key:"email"
-},
+// const columns = [
+// {
+// //   tiltle: "UserName",
+// dataIndex: "userName",
+// key:"username"
+// },
+// {
+// //   tiltle: "Email",
+// dataIndex: "email",
+// key:"email"
+// },
 
-]
+// ]
 // let data: any = ref([]);
 // const fetchData = async (): Promise<any[]> => {
 //   let data2 = [] as any[];
