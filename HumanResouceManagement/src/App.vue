@@ -7,14 +7,14 @@ import login from './components/LoginView/login.vue'
 
 <template>
  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <img alt="Vue logo" class="logo" src="https://th.bing.com/th/id/R.0f9fe85b9c825ccc0e6765625831aec8?rik=1UlGdLfoWkLCMw&riu=http%3a%2f%2flib.tgu.edu.vn%2fApp_Themes%2ftgu%2fimages%2ftgu-logo.png&ehk=9ockmqXUOLvgV7JIXZN%2btIWGI%2fXJ5BIg0J0VYJ9yyZ4%3d&risl=&pid=ImgRaw&r=0" width="125" height="125" />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/Auth">About</RouterLink>
+        <RouterLink to="/">Login</RouterLink>
+        <RouterLink to="/Auth">Register</RouterLink>
       </nav>
     </div>
   </header>
