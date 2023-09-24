@@ -1,7 +1,7 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-aside width="150px">
+      <el-aside width="300px">
         <el-row class="tac">
     <el-col :span="12">
       <h5 class="mb-2"></h5>
@@ -10,6 +10,7 @@
         class="el-menu-vertical-demo"
         @open="handleOpen"
         @close="handleClose"
+        style="background-color: var(--el-color-primary-light-3);"
       >
         <el-sub-menu index="1">
           <template #title>
@@ -24,7 +25,7 @@
             <el-menu-item index="1-3">item three</el-menu-item>
           </el-menu-item-group>
           <el-sub-menu index="1-4">
-            <template #title>item four</template>
+            <template class="oke" #title>item four </template>
             <el-menu-item index="1-4-1">item one</el-menu-item>
           </el-sub-menu>
         </el-sub-menu>
@@ -47,7 +48,7 @@
       <el-container>
         <el-header></el-header>
         <el-main>
-          <router-view></router-view>
+          <router-view/>
         </el-main>
         <el-footer></el-footer>
       </el-container>
@@ -85,6 +86,12 @@ background-size:cover;
   font-size: 16px;
 }
 
+.el-menu{
+  
+}
+span{
+text-align: center;
+}
 /* Hiệu ứng CSS */
 .menu-item:hover {
   background-color: #000;

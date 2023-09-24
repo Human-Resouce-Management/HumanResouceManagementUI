@@ -18,7 +18,7 @@ export const handleLogin = async (model: LoginViewModel): Promise<AppResponse<st
     });
 
     try {
-        const postResult = await axiosInstance.post(loginUrl, model);
+        const postResult = await axiosInstance.post(loginUrl , model);
         console.log(postResult.data);
         const responseObject = postResult.data
         resust = responseObject;

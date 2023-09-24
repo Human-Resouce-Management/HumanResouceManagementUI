@@ -17,10 +17,26 @@ const router = createRouter({
       path: '/',
       component: layout1,
       meta: { requiresAuth: true }, 
+      beforeEnter: async (to, from, next) => {
+        // Kiểm tra xem người dùng đã được đăng nhập hay chưa
+        const token: string | null = localStorage.getItem("token");
+  
+        if (!token) {
+          // Chuyển hướng người dùng đến trang đăng nhập
+          next({
+            path: "/Login",
+          });
+        }
+      }
+    },
+    {
+      path: '/Login',
+      component: layout1,
+      meta: { requiresAuth: true }, 
       children: [
         {
           path: '',
-          component: LoginView,
+          component:LoginView,
         },
         // Other routes using default layout...
       ],

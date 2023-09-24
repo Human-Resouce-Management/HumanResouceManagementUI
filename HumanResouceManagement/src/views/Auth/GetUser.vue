@@ -2,7 +2,7 @@
   <h1>User details</h1>
   <p>User Name: {{ user.userName }}</p>
   <p>Email: {{ user.email }}</p>
-  <p>Id: {{ user.role }}</p>
+  <p>Id: {{ user.id }}</p>
   <p>emailConfirmed: {{ user.emailConfirmed}}</p>
   </template>
   <script setup lang="ts">

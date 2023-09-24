@@ -29,7 +29,7 @@
 import { Calendar, Search, User, Key } from '@element-plus/icons-vue'
 import { reactive, ref } from 'vue';
 // @ts-ignore
-import { LoginViewModel } from '../../Models/Dtos/LoginViewModel'
+import { LoginViewModel } from '../../Models/LoginViewModel'
 
 // @ts-ignore
  import { handleLogin } from '../../Services/LoginService.ts'
@@ -37,12 +37,10 @@ import { LoginViewModel } from '../../Models/Dtos/LoginViewModel'
 
 // const _toast = useToast();
 const state = reactive<LoginViewModel>({
-  Id: '',
     UserName: '',
     Password: '',
     Email: '',
     Role: null,
-    LockoutEnabled: false,
 });
 const submitForm = async () => {
     console.log(state);
