@@ -1,10 +1,10 @@
 export class TangLuong{
-        Id:string|undefined;
-        NhanVienId:string|undefined;
-        NhanVien:string|undefined;
-        NgayCapNhat:Date|undefined;
-        SoTien:number|undefined;
-        HeSoCu:number|undefined;
-        HeSoMoi:number|undefined;
-        NgayKetThuc:Date|undefined;
+        id:string|undefined;
+        nhanVienId:string|undefined;
+        nhanVien:string|undefined;
+        ngayCapNhat:Date|undefined;
+        soTien:number|undefined;
+        heSoCu:number|undefined;
+        heSoMoi:number|undefined;
+        ngayKetThuc:Date|undefined;
     }

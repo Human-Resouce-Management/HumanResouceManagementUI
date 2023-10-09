@@ -1,7 +1,7 @@
 export class PhuCap{
-        Id:string|undefined;
-        ThuongCoDinh:boolean|undefined;
-        SoTien: number|undefined;
-        NhanVienId:string|undefined;
-        NhanVien:string|undefined;
+        id:string|undefined;
+        thuongCoDinh:boolean|undefined;
+        soTien: number|undefined;
+        nhanVienId:string|undefined;
+        nhanVien:string|undefined;
     }

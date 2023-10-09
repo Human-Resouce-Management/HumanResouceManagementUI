@@ -1,5 +1,5 @@
 <template>
-  <el-table :data="data" :columns = "columns" style="width: 100%">
+  <el-table :data="data"  style="width: 100%">
       <el-table-column prop="userName" label="UserName" width="180" />
       <el-table-column prop="email" label="Email" width="180" />
       <el-table-column fixed="right" label="Operations" width="100px">

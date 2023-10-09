@@ -10,10 +10,16 @@ import ResetPasswordView from '../views/Auth/ResetPasswordView.vue'
 import AdminView from '../views/Auth/AdminView.vue'
 import SearchUserView from '../views/Auth/SearchUserView.vue'
 import NhanVienView from '../views/Auth/NhanVienView.vue'
+import EditUserVue from '@/views/Auth/EditUser.vue';
+import GetAll from '@/views/BoPhan/GetAll.vue'
+import Edit from '../views/BoPhan/Edit.vue'
+import GetIds from '../views/BoPhan/GetIds.vue'
+import SearchBoPhan from '../views/BoPhan/Search.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      // Dang Nhap Dki 
       path: '/',
       component: layout1,
       meta: { requiresAuth: true }, 
@@ -57,6 +63,9 @@ const router = createRouter({
         // Other routes using default layout...
       ],
     },
+
+
+    // User
     {
       path: '/GetAll',
       component: layout1,
@@ -70,6 +79,7 @@ const router = createRouter({
       ],
     },
      
+
     {
       path: "/GetAll/:Id",
       component: GetUser,
@@ -110,6 +120,78 @@ const router = createRouter({
         // Other routes using default layout...
       ],
     },
+
+    {
+      path: '/Edit',
+      component: layout1,
+      meta: { requiresAuth: true }, 
+      children: [
+        {
+          path: '',
+          component: EditUserVue,
+        },
+        // Other routes using default layout...
+      ],
+    },
+
+
+
+    
+//Bo Phan
+{
+  path: '/GetIDBoPhan',
+  component: layout1,
+  meta: { requiresAuth: true }, 
+  children: [
+    {
+      path: '',
+      component: GetIds,
+    },
+    // Other routes using default layout...
+  ],
+},
+    {
+      path: '/GetAllBoPhan',
+      component: layout1,
+      meta: { requiresAuth: true }, 
+      children: [
+        {
+          path: '',
+          component:GetAll ,
+        },
+        // Other routes using default layout...
+      ],
+    },
+    {
+      path: "/GetAllBoPhan/:Id",
+      component: GetIds,
+    },
+    {
+      path: '/EditBoPhan',
+      component: layout1,
+      meta: { requiresAuth: true }, 
+      children: [
+        {
+          path: '',
+          component:Edit ,
+        },
+        // Other routes using default layout...
+      ],
+    },
+
+    {
+      path: '/SearchBoPhan',
+      component: layout1,
+      meta: { requiresAuth: true }, 
+      children: [
+        {
+          path: '',
+          component:SearchBoPhan ,
+        },
+        // Other routes using default layout...
+      ],
+    },
+
   ]
 })
 

@@ -1,7 +1,7 @@
 export class TuyenDung{
-        Id:string|undefined;
-        Ten:string|undefined;
-        LienHe:string|undefined;
-        ViTriUngTuyen:string|undefined;
-        KetQua:boolean|undefined;
+        id:string|undefined;
+        ten:string|undefined;
+        lienHe:string|undefined;
+        viTriUngTuyen:string|undefined;
+        ketQua:boolean|undefined;
     }

@@ -1,11 +1,11 @@
 export class NghiPhep{
-        Id:string|undefined;
-        NgayNghi: Date|undefined;
-        NghiCoLuong:boolean|undefined;
-        NhanVienId:string|undefined;
-        NhanVien:string|undefined;
-        NguoiXacNhanId:string|undefined;
-        NgayKetThuc:Date|undefined;
-        SoGioNghi:number|undefined;
+        id:string|undefined;
+        ngayNghi: Date|undefined;
+        nghiCoLuong:boolean|undefined;
+        nhanVienId:string|undefined;
+        nhanVien:string|undefined;
+        nguoiXacNhanId:string|undefined;
+        ngayKetThuc:Date|undefined;
+        soGioNghi:number|undefined;
         
     }

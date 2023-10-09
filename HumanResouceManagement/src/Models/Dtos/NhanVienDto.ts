@@ -1,11 +1,11 @@
 export class NhanVien{
-        Id: string|undefined;
-        Ten: string|undefined;
-        BoPhanId: string|undefined;
-        BoPhan: string|undefined;
-        ChucVuId: string|undefined;
-        ChucVu: string|undefined;
-        CapBac: number|undefined;
-        HeSo: number|undefined;
-        MucLuong: number|undefined;
+        id: string|undefined;
+        ten: string|undefined;
+        boPhanId: string|undefined;
+        boPhan: string|undefined;
+        chucVuId: string|undefined;
+        chucVu: string|undefined;
+        capBac: number|undefined;
+        heSo: number|undefined;
+        mucLuong: number|undefined;
     }

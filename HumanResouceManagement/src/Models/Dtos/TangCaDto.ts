@@ -1,9 +1,9 @@
 export class TangCa{
-        Id:string|undefined;
-        SoGio:number|undefined;
-        Ngay:Date|undefined;
-        GioBatDau:string|undefined;
-        GioKetThuc:string|undefined;
-        HeSoCa:number|undefined;
-        NguoiXacNhanId:string|undefined;
+        id:string|undefined;
+        soGio:number|undefined;
+        ngay:Date|undefined;
+        gioBatDau:string|undefined;
+        gioKetThuc:string|undefined;
+        heSoCa:number|undefined;
+        nguoiXacNhanId:string|undefined;
     }

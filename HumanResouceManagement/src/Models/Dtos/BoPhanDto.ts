@@ -1,6 +1,6 @@
 export class BoPhan{
         id: string| undefined;
-        TenBoPhan:string|undefined;
-        QuanLy:string|undefined;
-        BoPhanChuQuanId: string|undefined;
+        tenBoPhan:string|undefined;
+        quanLy:string|undefined;
+    //     BoPhanChuQuanId: string|undefined;
     }
