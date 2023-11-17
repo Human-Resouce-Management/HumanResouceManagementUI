@@ -13,6 +13,7 @@
   import { fa } from 'element-plus/lib/locale/index.js';
   import { ref, reactive } from 'vue';
   import { useRoute } from 'vue-router';
+  import { axiosInstance } from '@/Services/axiosConfig';
   let user = ref<User>({
         id : "",
         userName: "",
@@ -31,7 +32,7 @@
         accessFailedCount: ""
     });
   async function getUser(userId: any) {
-        await axios.get(`https:localhost:7141/api/UserManagement/${userId}`)
+        await axiosInstance.get(`UserManagement/${userId}`)
           .then((User) => {
             // Lưu dữ liệu của người dùng vào biến cục bộ
             user.value = User.data.data;

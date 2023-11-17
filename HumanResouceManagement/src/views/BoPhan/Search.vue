@@ -19,14 +19,31 @@
         <el-table-column prop="quanLy" label="Quản lý" />
       </el-table>
     </el-card>
-    <div style="display: flex;">
+    <div style="display: flex; height: 200px;">
     <el-button v-if="Number(Search.PageIndex) > 1" @click="previousPage">{{Number(Search.PageIndex) - 1}}</el-button>
     <el-button type="primary">{{Search.PageIndex}}</el-button>
     <el-button v-if="data.length% Search.PageSize! == 0 " @click="nextPage">{{Number(Search.PageIndex) + 1}}</el-button>
+    <div class="btnExcel">
+    <button  @click="exportToExcel">Xuất file Excel</button>
   </div>
+  </div>
+  
   </template>
+
+  <style>
+  .btnExcel>button{
+    width: 100%;
+    height: 100%;
+ 
+  }
+  .btnExcel {
+    width: 100px;
+    height: 50px;
+    margin-left: 85%;
+    margin-top: 3%;
+  }
+</style>
   <script setup lang="ts">
-  import { User } from "@/Models/Usermodel";
   import { BoPhan } from "@/Models/Dtos/BoPhanDto";
   import { ref, reactive} from "vue";
   import { axiosInstance } from "@/Services/axiosConfig";
@@ -35,7 +52,7 @@
   import { Filter } from "../../Models/Request/SearchModels/Filter";
   import {SortByInfo} from '../../Models/Request/SearchModels/SortByInfo'
   import axios from "axios";
-  
+
   
   let data = ref([] as BoPhan[]);
   let Sname = ref("");
@@ -85,6 +102,23 @@
     data.value = result;
     console.log(data);
   });
+
+
+  const exportToExcel = async () => {
+  // Gọi API để tạo file Excel
+  try {
+    const response = await axiosInstance.post('BoPhan/Download', Search,{responseType: 'blob'});
+    const blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'SelectedRows.xlsx';
+    a.click();
+    window.URL.revokeObjectURL(url);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
   // async function fetchData2Async() {
   //   const result = await fetchData2(Search);
   //   data.value = result;

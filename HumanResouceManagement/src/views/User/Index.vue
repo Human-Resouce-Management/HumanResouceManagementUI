@@ -1,7 +1,8 @@
 <template>
     <Suspense>
-        <BasicAdminFormVue :tableColumns="tableColumns" :apiName="'user'" :allowAdd="true" :allowDelete="true"
-            :allowEdit="false"></BasicAdminFormVue>
+        <BasicAdminFormVue :tableColumns="tableColumns" :apiName="'UserManagement'" :allowAdd="true" :allowDelete="true"
+            title="UserManagement"
+            :allowEdit="true"></BasicAdminFormVue>
     </Suspense>
 </template>
 
@@ -14,21 +15,44 @@ const tableColumns: TableColumn[] = [
         key: "userName",
         label: "User Name",
         enableEdit: false,
+        enableCreate:true,
         hidden: false,
         width: 500,
         required: true,
         sortable: true,
-        showSearch:true,
+        showSearch: true,
+        inputType: "text",
+        dropdownData: null,
+
     },
     {
         key: "role",
-        label: "User Name",
-        enableEdit: false,
+        label: "Role",
+        enableEdit: true,
+        enableCreate:true,
         hidden: false,
         width: 300,
         required: true,
         sortable: true,
-        showSearch:false,
+        showSearch: false,
+        inputType: "dropdown",
+        dropdownData: {
+            displayMember: "roleName",
+            keyMember: "role",
+            data: [
+                {
+                    role: "Admin",
+                    roleName:"Admin"
+                },
+                {
+
+                    role: "TenantAdmin",
+                    roleName:"Personal"
+                }
+            ]
+
+        },
+
     },
 
 ]

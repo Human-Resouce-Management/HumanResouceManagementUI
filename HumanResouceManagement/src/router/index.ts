@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import layout1 from '../components/layout/layout1.vue'
+import LayoutBlankVue from '@/components/layout/LayoutBlank.vue';
+import LayoutElementVue from '@/components/layout/LayoutElement.vue';
 // import RegisterView from '../components/LoginView/RegisterView.vue'
 import Cookies from 'js-cookie';
 import LoginView from '../views/Auth/LoginView.vue'
@@ -15,13 +17,18 @@ import GetAll from '@/views/BoPhan/GetAll.vue'
 import Edit from '../views/BoPhan/Edit.vue'
 import GetIds from '../views/BoPhan/GetIds.vue'
 import SearchBoPhan from '../views/BoPhan/Search.vue'
+import PostBoPhan from '../views/BoPhan/Post.vue'
+import LayoutMenu from '../components/layout/LayoutMenuDoc.vue'
+import User from '../views/User/Index.vue'
+import PostNhanVien from '../views/NhanVien/PostNhanVien.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       // Dang Nhap Dki 
       path: '/',
-      component: layout1,
+      component: LayoutMenu,
       meta: { requiresAuth: true }, 
       beforeEnter: async (to, from, next) => {
         // Kiểm tra xem người dùng đã được đăng nhập hay chưa
@@ -53,7 +60,7 @@ const router = createRouter({
     },
     {
       path: '/Auth',
-      component: layout1,
+      component: LayoutMenu,
       meta: { requiresAuth: true }, 
       children: [
         {
@@ -64,11 +71,22 @@ const router = createRouter({
       ],
     },
 
-
+    {
+      path: '/User',
+      component: LayoutElementVue,
+      meta: { requiresAuth: true }, 
+      children: [
+        {
+          path: '',
+          component:User,
+        },
+        // Other routes using default layout...
+      ],
+    },
     // User
     {
       path: '/GetAll',
-      component: layout1,
+      component: LayoutMenu,
       meta: { requiresAuth: true }, 
       children: [
         {
@@ -86,7 +104,7 @@ const router = createRouter({
     },
     {
       path: '/Admin',
-      component: layout1,
+      component: LayoutMenu,
       meta: { requiresAuth: true }, 
       children: [
         {
@@ -98,7 +116,7 @@ const router = createRouter({
     },
     {
       path: '/Search',
-      component: layout1,
+      component: LayoutMenu,
       meta: { requiresAuth: true }, 
       children: [
         {
@@ -150,6 +168,20 @@ const router = createRouter({
     // Other routes using default layout...
   ],
 },
+
+{
+  path: '/postBoPhan',
+  component: layout1,
+  meta: { requiresAuth: true }, 
+  children: [
+    {
+      path: '',
+      component: PostBoPhan,
+    },
+    // Other routes using default layout...
+  ],
+},
+
     {
       path: '/GetAllBoPhan',
       component: layout1,
@@ -181,7 +213,7 @@ const router = createRouter({
 
     {
       path: '/SearchBoPhan',
-      component: layout1,
+      component: LayoutMenu,
       meta: { requiresAuth: true }, 
       children: [
         {
@@ -191,7 +223,19 @@ const router = createRouter({
         // Other routes using default layout...
       ],
     },
-
+//Nhan Vien
+{
+  path: "/PostNhanVien",
+  component:LayoutMenu ,
+  meta: { requiresAuth: true }, 
+  children: [
+    {
+      path: '',
+      component:PostNhanVien ,
+    },
+    // Other routes using default layout...
+  ],
+},
   ]
 })
 

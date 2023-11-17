@@ -2,6 +2,7 @@
   <el-table :data="data"  style="width: 100%">
       <el-table-column prop="userName" label="UserName" width="180" />
       <el-table-column prop="email" label="Email" width="180" />
+      <el-table-column prop="role" label="Role" width="180" />
       <el-table-column fixed="right" label="Operations" width="100px">
       <template #default="scope">
         <el-button link type="primary" size="small" @click="showDetails(scope.row.id)"
@@ -29,6 +30,7 @@
 import axios from "axios";
 import { reactive, ref } from 'vue';
 import {fetchData} from '../../Services/GetAllUserServices'
+import {axiosInstance} from '../../Services/axiosConfig'
 // const columns = [
 // {
 // //   tiltle: "UserName",
@@ -71,7 +73,7 @@ main();
 
 function showDetails(userId:string) {
   // Gọi api tìm kiếm người dùng
-  axios.get(`https:localhost:7141/api/UserManagement/${userId}`)
+  axiosInstance.get(`UserManagement/${userId}`)
     .then((user) => {
       // Chuyển hướng người dùng đến trang thông tin chi tiết
       window.location.href = `/GetAll/${userId}`;
@@ -79,7 +81,7 @@ function showDetails(userId:string) {
     }
     async function Deleteuser(userId: any) {
     try {
-        const response= await  axios.delete(`https://localhost:7141/api/UserManagement/${userId}`);
+        const response= await  axiosInstance.delete(`UserManagement/${userId}`);
     if (response.status === 200) {
       alert('Da Xoa.');
     } else {

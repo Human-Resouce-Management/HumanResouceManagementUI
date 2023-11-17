@@ -1,11 +1,12 @@
 <template>
-  <div class="common-layout">
-    <el-container>
-      <el-aside width="300px">
+  <div class="common-layout"  >
+    <el-container width="300px">
+      <el-aside width="50px" height>
         <el-row class="tac">
+          
     <el-col :span="12">
       <h5 class="mb-2"></h5>
-      <el-menu
+      <!-- <el-menu
         default-active="2"
         class="el-menu-vertical-demo"
         @open="handleOpen"
@@ -41,12 +42,15 @@
           <el-icon><setting /></el-icon>
           <span>Navigator Four</span>
         </el-menu-item>
-      </el-menu>
+      </el-menu> -->
     </el-col>
   </el-row>
       </el-aside>
       <el-container>
-        <el-header></el-header>
+        <el-header><div class="login-buttons" >
+  <button class="login-button" @click="LoginForm()">Đăng nhập</button>
+  <button class="register-button" @click="RegisterForm()">Đăng ký</button>
+</div></el-header>
         <el-main>
           <router-view/>
         </el-main>
@@ -56,16 +60,41 @@
   </div>
 </template>
 <style>
-.common-layout {
-  padding: 5px;
+.login-buttons {
+  width: 400px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: -8%;
 }
+
+.login-button,
+.register-button {
+  background-color: transparent;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 20px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover,
+.register-button:hover {
+  background-color: #f0f0f0;
+}
+
+
 html, body {
 background-color: aliceblue;
-margin: 0;
-padding: 0;
 background-image: url(https://freenice.net/wp-content/uploads/2021/06/hinh-nen-powerpoint-3d.jpg);
 background-repeat: no-repeat;
 background-size:cover;
+height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 .el-aside {
   color: var(--el-text-color-primary);
@@ -85,9 +114,12 @@ background-size:cover;
   font-family: sans-serif;
   font-size: 16px;
 }
-
+.el-aside{
+  color: var(--el-text-color-primary);
+  background: var(--el-color-primary-light-3);
+}
 .el-menu{
-  
+  padding: 0;
 }
 span{
 text-align: center;
@@ -104,7 +136,14 @@ text-align: center;
   background-position: center left;
   padding-left: 20px;
 }
-
+div, .el-container {
+  height: 100%;
+  width: 100%;
+}
+.el-header, .el-main, .el-footer, .el-aside {
+  height: 100%;
+  width: 100%;
+}
 </style>  
 <script lang="ts" setup>
 import {
@@ -118,5 +157,11 @@ const handleOpen = (key: string, keyPath: string[]) => {
 }
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
+}
+function LoginForm(){
+  window.location.href = `/login`;
+}
+function RegisterForm(){
+  window.location.href = `/Auth`;
 }
 </script>

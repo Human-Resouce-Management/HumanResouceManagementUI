@@ -6,10 +6,10 @@
           <el-input v-model="user.id" ></el-input>
         </el-form-item>
         <el-form-item label="Ten BoP han">
-          <el-input v-model="user.TenBoPhan" ></el-input>
+          <el-input v-model="user.tenBoPhan" ></el-input>
         </el-form-item>
         <el-form-item label="Quan Ly">
-          <el-input v-model="user.QuanLy" ></el-input>
+          <el-input v-model="user.quanLy" ></el-input>
         </el-form-item>
         <!-- <el-form-item label="Vai trò">
           <el-select v-model="user.role" placeholder="Chọn vai trò">
@@ -35,8 +35,8 @@
 import{Accout} from "@/Models/AccoutModel"
   let user = ref<BoPhan>({
         id :String(useRoute().params.Id),
-        TenBoPhan:"",
-        QuanLy:"",      
+        tenBoPhan:"",
+        quanLy:"",      
     });
 //     const state = reactive<BoPhan>({
 //         id : user.value.id,
@@ -48,8 +48,8 @@ import{Accout} from "@/Models/AccoutModel"
     var state = new BoPhan();
     state = {
       id : user.value.id,
-        TenBoPhan: user.value.TenBoPhan,
-                QuanLy:user.value.QuanLy,  
+        tenBoPhan: user.value.tenBoPhan,
+                quanLy:user.value.quanLy,  
     }
     try{
       const EditResult = await EditBoPhan(state);

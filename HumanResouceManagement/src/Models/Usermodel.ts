@@ -14,5 +14,6 @@ export class User {
     lockoutEnd: string|unknown
     lockoutEnabled: boolean|unknown
     accessFailedCount: string|unknown
+    
 }
 
