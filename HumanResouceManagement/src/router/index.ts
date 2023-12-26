@@ -21,6 +21,17 @@ import PostBoPhan from '../views/BoPhan/Post.vue'
 import LayoutMenu from '../components/layout/LayoutMenuDoc.vue'
 import User from '../views/User/Index.vue'
 import PostNhanVien from '../views/NhanVien/PostNhanVien.vue'
+import TinhLuong from '../views/Luong/Tinhluong.vue'
+import Homepage from "../views/Auth/HomepageView.vue";
+import Nhanvien from "../views/NhanVien/NhanVien.vue";
+import layout1Vue from '../components/layout/layout1.vue';
+import ChucVu from '../views/ChucVu/ChucVu.vue'
+// import NhanVienTangCa from '../views/NhanVienTangCa/NhanVienTangCa.Vue'
+import TangLuong from '../views/TangLuong/TangLuong.vue'
+import TangCa from '../views/TangCa/TangCa.vue'
+import ThoiViec from '../views/ThoiViec/ThoiViec.vue'
+import DeataiTangCa from '../views/TangCa/Detail.vue'
+import Bohan2 from '../views/BoPhan2/BoPhan.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -60,7 +71,7 @@ const router = createRouter({
     },
     {
       path: '/Auth',
-      component: LayoutMenu,
+      component: layout1,
       meta: { requiresAuth: true }, 
       children: [
         {
@@ -73,7 +84,7 @@ const router = createRouter({
 
     {
       path: '/User',
-      component: LayoutElementVue,
+      component: LayoutMenu,
       meta: { requiresAuth: true }, 
       children: [
         {
@@ -236,6 +247,127 @@ const router = createRouter({
     // Other routes using default layout...
   ],
 },
+
+{
+  path: "/Nhanvienviews",
+  component:LayoutMenu ,
+  meta: { requiresAuth: true }, 
+  children: [
+    {
+      path: '',
+      component:Nhanvien ,
+    },
+    // Other routes using default layout...
+  ],
+},
+
+//Luong
+{
+  path: "/TinhLuong",
+  component:LayoutMenu ,
+  meta: { requiresAuth: true }, 
+  children: [
+    {
+      path: '',
+      component:TinhLuong ,
+    },
+    // Other routes using default layout...
+  ],
+},
+
+{
+  path: "/Home",
+  component:LayoutMenu ,
+  meta: { requiresAuth: true }, 
+  children: [
+    {
+      path: '',
+      component:Homepage,
+    },
+    // Other routes using default layout...
+  ],
+},
+
+
+//Chuc Vu
+{
+  path: "/ChucVu",
+  component:LayoutMenu ,
+  meta: { requiresAuth: true }, 
+  children: [
+    {
+      path: '',
+      component:ChucVu,
+    },
+    // Other routes using default layout...
+  ],
+},
+
+{
+  path: "/TangCa",
+  component:LayoutMenu ,
+  meta: { requiresAuth: true }, 
+  children: [
+    {
+      path: '',
+      component:TangCa,
+    },
+    // Other routes using default layout...
+  ],
+},
+
+{
+  path: "/TangLuong",
+  component:LayoutMenu ,
+  meta: { requiresAuth: true }, 
+  children: [
+    {
+      path: '',
+      component:TangLuong,
+    },
+    // Other routes using default layout...
+  ],
+},
+
+{
+  path: '/TangCa/:Id',
+  component:LayoutMenu ,
+  meta: { requiresAuth: true }, 
+  children: [
+    {
+      path: '',
+      component:DeataiTangCa,
+    },
+    // Other routes using default layout...
+  ],
+},
+
+{
+  path: '/BoPhan',
+  component:LayoutMenu ,
+  meta: { requiresAuth: true }, 
+  children: [
+    {
+      path: '',
+      component:Bohan2,
+    },
+    // Other routes using default layout...
+  ],
+},
+
+{
+  path: "/ThoiViec",
+  component:LayoutMenu ,
+  meta: { requiresAuth: true }, 
+  children: [
+    {
+      path: '',
+      component:ThoiViec,
+    },
+    // Other routes using default layout...
+  ],
+},
+
   ]
 })
 

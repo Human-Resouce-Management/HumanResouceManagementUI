@@ -16,6 +16,8 @@
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
+    "stream": "^0.0.2",
+    "util": "^0.12.5",
     "vue": "^3.3.4",
     "vue-axios": "^3.5.2",
     "vue-jwt-decode": "^0.1.0",

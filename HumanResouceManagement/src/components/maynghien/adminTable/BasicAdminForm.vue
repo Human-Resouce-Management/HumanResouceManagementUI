@@ -1,18 +1,18 @@
 
 <template>
   <MnActionPane :allowAdd="true" :tableColumns="tableColumns" :isEdit="isEditting"
-    @onBtnSearchClicked="handleBtnSearchClicked" @onBtnAddClicked="handleOpenCreate" :openDialog="openDialogCreate">
+    @onBtnSearchClicked="handleBtnSearchClicked" @onBtnAddClicked="handleOpenCreate" :CustomActions="CustomButtons"
+    :openDialog="openDialogCreate">
   </MnActionPane>
   <MnTable :columns="tableColumns" :datas="datas" :onSaved="handleSaved" :enableEdit="allowEdit"
-    :enableDelete="allowDelete" :onCloseClicked="handleOnEditCloseClicked" @onEdit="handleEdit"
-    @ondelete="handleDelete" />
-  <el-pagination style="height: 200px; width: 200px;" small background layout="prev, pager, next" :total="totalItem" :page-size="10"
+    :enableDelete="allowDelete" :onCloseClicked="handleOnEditCloseClicked" @onEdit="handleEdit" @onDelete="handleDelete"
+    :CustomActions="CustomRowActions" @on-custom-action="handleCustomAction" @onSortChange="handleSortChange" />
+  <el-pagination small background layout="prev, pager, next" :total="totalItem" :page-size="10"
     @current-change="handlePageChange" :current-page="searchRequest.PageIndex" class="mt-4" />
   Found {{ totalItem }} results. Page {{ searchRequest.PageIndex }} of total {{ totalPages }} pages
 
-  
-  <MnEditItem ref="MnEdit" :columns="tableColumns" :apiName="apiName" :openDialog="openDialogCreate"
-  :title="title"
+
+  <MnEditItem ref="MnEdit" :columns="tableColumns" :apiName="apiName" :openDialog="openDialogCreate" :title="title"
     :editItem="EdittingItem" :isEdit="isEditting" @onSaved="handleSaved" @onCloseClicked="handleOnEditCloseClicked" />
 </template>
   
@@ -26,30 +26,33 @@ import MnActionPane from './MnActionPane.vue'
 // @ts-ignore
 import MnEditItem from './MnEditItem.vue'
 
-import { ref, provide } from 'vue';
+import { ref, watch } from 'vue';
 // @ts-ignore
 import { TableColumn } from './Models/TableColumn.ts'
 // @ts-ignore
 import { SearchDTOItem } from './Models/SearchDTOItem.ts'
 
 // @ts-ignore
-import { handleAPIDelete, handleAPISearch } from './Service/BasicAdminService.ts'
+import { handleAPICustom, handleAPIDelete, handleAPISearch } from './Service/BasicAdminService.ts'
 
 // @ts-ignore
 import { Filter } from '../BaseModels/Filter';
 // @ts-ignore
 import { SearchResponse } from '../BaseModels/SearchResponse';
 import { SearchRequest } from '../BaseModels/SearchRequest';
-// import type { AppResponse } from '@/Models/AppResponse';
+import type { AppResponse } from '@/models/AppResponse';
 // @ts-ignore
 import { ElMessage } from 'element-plus';
+import type { CustomAction, CustomActionResponse } from './Models/CustomAction';
+import type SortByInfo from '../BaseModels/SortByInfo';
+// import { SortByInfo } from '../BaseModels/SortByInfo';
 //#region Method
 
 const Search = async () => {
   var searchApiResponse = await handleAPISearch(searchRequest, props.apiName);
-  if (searchApiResponse.isSuccess) {
-    // let dataresponse: SearchResponse<SearchDTOItem[]> = searchApiResponse.data;
-      let dataresponse = searchApiResponse.data as SearchResponse<SearchDTOItem[]>;
+  if (searchApiResponse.isSuccess && searchApiResponse.data != undefined) {
+    let dataresponse: SearchResponse<SearchDTOItem[] | undefined> = searchApiResponse.data;
+
     if (dataresponse != undefined && dataresponse.data != undefined && dataresponse.data.length > 0) {
       datas.value = dataresponse.data;
       if (dataresponse.totalPages != undefined)
@@ -74,11 +77,20 @@ const Search = async () => {
 const props = defineProps<{
   tableColumns: TableColumn[];
   apiName: string;
+  createUrl?: string;
+  editUrl?: string;
   allowAdd: boolean;
   allowEdit: boolean;
   allowDelete: boolean;
-  title:string;
+  title: string;
+  CustomActions: CustomAction[];
+  CustomFilters?: Filter[];
+  isEditedOutSide?: boolean;
 }>();
+const emit = defineEmits<{
+
+  (e: 'onCustomAction', item: CustomActionResponse): void;
+}>()
 let datas = ref<SearchDTOItem[]>([]);
 const totalPages = ref(0);
 const totalItem = ref(10);
@@ -86,11 +98,14 @@ const totalItem = ref(10);
 
 let searchRequest: SearchRequest = {
   PageIndex: 1,
-  PageSize: 2,
-  filters: undefined,
-  SortByInfo: undefined
+  PageSize: 10,
+  filters: props.CustomFilters,
+  SortBy: undefined
 }
- Search();
+const CustomButtons = ref<CustomAction[]>([{}]);
+const CustomRowActions = ref<CustomAction[]>([{}]);
+
+await Search();
 //#endregion
 //#region variable
 const SelectedRowId = ref<string | null>(null);
@@ -101,7 +116,7 @@ const isEditting = ref(false);
 
 //#region event funcs
 const handleBtnSearchClicked = (filters: Filter[]) => {
-
+  filters = filters.concat(props.CustomFilters ?? []);
   searchRequest.filters = filters;
   searchRequest.PageIndex = 1;
   Search();
@@ -141,6 +156,7 @@ const handleDelete = async (id: string) => {
       message: 'row deleted.',
       type: 'success',
     });
+    await Search();
   }
   else {
     ElMessage({
@@ -149,7 +165,16 @@ const handleDelete = async (id: string) => {
     });
   }
 }
+const handleSortChange = async (event: any) => {
+  const sortByInfo: SortByInfo = {
+    FieldName: event.column.property,
+    Ascending: event.column.order != "descending"
 
+  }
+  searchRequest.SortBy = sortByInfo;
+  searchRequest.PageIndex = 1;
+  await Search();
+};
 const SelectedId = ref("");
 //provide('OpenDialogCreateItem', openDialogCreate);
 const handleEdit = async (item: SearchDTOItem) => {
@@ -157,9 +182,40 @@ const handleEdit = async (item: SearchDTOItem) => {
   isEditting.value = true;
   openDialogCreate.value = true;
 }
+const handleCustomAction = async (item: CustomActionResponse) => {
+  if (item.Action.ApiAction != undefined) {
+    var url: string = props.apiName + "/" + item.Action.ActionName;
+    var apiResult = await handleAPICustom(item.Data, item.Action, url);
+    console.log(apiResult);
+
+    if (!apiResult.isSuccess) {
+      console.log(apiResult);
+      return;
+    }
+    else {
+      searchRequest.PageIndex = 1;
+      await Search();
+    }
+  }
+  else {
+    emit("onCustomAction", item);
+  }
+}
 const handlePageChange = async (value: number) => {
   searchRequest.PageIndex = value;
   await Search();
 }
 //#endregion
+
+watch(() => props.CustomActions, () => {
+  CustomButtons.value = props.CustomActions.filter(m => m.IsRowAction == false);
+  CustomRowActions.value = props.CustomActions.filter(m => m.IsRowAction == true);
+  console.log(CustomRowActions);
+}, { immediate: true })
+
+watch(() => props.isEditedOutSide, () => {
+  if(props.isEditedOutSide!=undefined && props.isEditedOutSide==true){
+    Search();
+  }
+}, { immediate: true })
 </script>

@@ -41,7 +41,7 @@
     </el-col>
     <el-col :span="2">
       <el-button icon="el-icon-message" @click="ClickonBoPhan()"
-        style="background-image: url(https://www.myslingstudio.com/images/help/community-icon.png);"></el-button>
+        style="background-image: url(https://abms.co/wp-content/uploads/2017/06/icon-16.png);"></el-button>
       <p>Bộ Phận</p>
     </el-col>
     <el-col :span="2">
@@ -118,7 +118,8 @@ opacity: 0.5;
 p {
   width: 180px;
   text-align: center;
-  color: rgb(207, 196, 181);
+  font-family: cursive;
+  color: rgb(14, 8, 1);
   font-size: 20px;
 }
 

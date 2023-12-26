@@ -5,7 +5,7 @@
   <div>
     <el-row>
       <el-col :span="16">
-        <el-row class="login-container" style="  background-color: aquamarine; position: absolute; left: 25%;">
+        <el-row class="login-container" style="  background-color: rgb(237, 241, 240); position: absolute; left: 25%; top: 250px;">
     <el-col :span="24" class="login-col">
       <div class="grid-content ep-bg-purple">
         <el-form ref="ruleFormRef" :model="state" status-icon label-width="px" class="demo-ruleForm">
@@ -24,7 +24,7 @@
           </el-form-item>
 
         </el-form>
-      </div>
+      </div >
     </el-col>
   </el-row>
       </el-col>
@@ -35,6 +35,7 @@
           show-icon
           center
           :closable="false"
+          style="height: 550px; margin-left: -10%;"
         ></el-alert>
       </el-col>
     </el-row>
@@ -51,7 +52,6 @@ import {fetchData} from '@/Services/GetAllUserServices'
 // @ts-ignore
  import { handleLogin } from '../../Services/LoginService.ts'
 // import { useToast } from "vue-toastification";
-import { decode } from "vue-jwt-decode";
 
 
 
@@ -85,13 +85,11 @@ const submitForm = async () => {
     // state.Email = state.UserName
     const loginResult = await handleLogin(state);
     console.log("logresult:" + loginResult);
-    // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZ…vbSJ9.k38OwelAfNtkFZmjhguiP3nRXYtHUUBLHDeMrKzwG9o';
-    // const decodedToken = decode(token);
-    // console.log("Decoded token:", decodedToken);
+   
     if(loginResult.isSuccess  ){
-      // if(userref.value.UserName == 'ble07983@gmail.com'){
-      //   state.Role= 'superadmin';
-      // }
+      if(userref.value.UserName == 'ble07983@gmail.com'){
+        state.Role= 'superadmin';
+      }
 
       console.log(userref.value);
       console.log(userref.value.Role);
@@ -129,8 +127,9 @@ const submitForm = async () => {
 body,
 html {
   height: 100%;
+  width: 100%;
   margin: 0;
-  display: flex;
+  
   justify-content: center;
   align-items: center;
   background-color: aquamarine;

@@ -3,7 +3,7 @@
     <el-container>
       <el-header>
         <button @click="Loginmenu" class="btn1">Đăng Nhập</button>
-        <button @click="logout"><el-icon></el-icon>Đăng Xuất</button>
+        <button @click="logout" class="btn2"><el-icon></el-icon>Đăng Xuất</button>
       </el-header>
       <el-container >
         <el-aside :width="isCollapse ? '64px' : '200px'">
@@ -14,30 +14,61 @@
               <template></template>
             </el-menu-item>
             <el-menu-item index="2">
-              <el-icon><Avatar /></el-icon>
+              <el-icon @click="onMenuItemClick('User')"><UserFilled /></el-icon>
               <template #title>USER</template>
             </el-menu-item>
             <el-menu-item index="3" >
-              <el-icon><Search /></el-icon>
-              <template #title >SEARCH USER</template>
+              <el-icon @click="onMenuItemClick('Nhanvienviews')"><Avatar /></el-icon>
+              <template #title >Nhân Viên</template>
             </el-menu-item>
             <el-menu-item index="4">
-              <el-icon><PieChart /></el-icon>
-              <template #title> STATISTICS</template>
+              <el-icon @click="onMenuItemClick('ChucVu')"><Suitcase /></el-icon>
+              <template #title> Chức Vụ</template>
             </el-menu-item>
             <el-menu-item index="5">
-              <el-icon>
-                <setting />
+              <el-icon @click="onMenuItemClick('TinhLuong')">
+                <Money />
               </el-icon>
-              <template #title>SETTING</template>
+              <template #title>Lương</template>
+            </el-menu-item>
+            <el-menu-item index="6">
+              <el-icon @click="onMenuItemClick('TangLuong')"><Histogram /></el-icon>
+              <template #title> Tăng Lương</template>
+            </el-menu-item>
+            <el-menu-item index="7">
+              <el-icon @click="onMenuItemClick('TangCa')"><Watch/></el-icon>
+              <template #title> Tăng Ca</template>
+            </el-menu-item>
+
+            <el-menu-item index="8">
+              <el-icon @click="onMenuItemClick('BoPhan')"><Briefcase/></el-icon>
+              <template #title> Bộ Phận</template>
+            </el-menu-item>
+
+            <el-menu-item index="9">
+              <el-icon @click="onMenuItemClick('ThoiViec')"><WarnTriangleFilled/></el-icon>
+              <template #title> Thoi Viec</template>
             </el-menu-item>
           </el-menu>
         </el-aside>
-        <el-main>
+        <el-main class="mainel2">
           <router-view />
         </el-main>
       </el-container>
-      <el-footer>Footer</el-footer>
+      <el-footer style="background-color: #324d69; color: white; text-align: center; height: 183px;">
+      <div style="">
+        <p style="font-size: 18px;">Thông tin liên hệ</p>
+        <p>Địa chỉ: Số 123, Đường ABC, Thành phố XYZ</p>
+        <p>Email: example@email.com</p>
+        <p>Số điện thoại: 123-456-789</p>
+        <!-- Các liên kết mạng xã hội -->
+        <div style="margin-top: 20px;">
+          <a href="#" style="color: white; margin-right: 10px;"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" style="color: white; margin-right: 10px;"><i class="fab fa-twitter"></i></a>
+          <a href="#" style="color: white; margin-right: 10px;"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </el-footer>
     </el-container>
   </div>
 </template>
@@ -45,13 +76,28 @@
 <style>
 .el-header > button:hover{
 background-color: aliceblue;
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.mainel2{
+  background-image: url(https://kynangquantri.com/wp-content/uploads/2020/11/quan-ly-nhan-luc.png);
+background-repeat: no-repeat;
+background-size:cover;
 }
 .oke{
   width: 200vh;
   height: 100vh;
 }
+.btn2{
+  color: #000;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
 .btn1 {
+  color: #000;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
   margin-left: 85%;
 }
 html, body {
@@ -76,7 +122,7 @@ html, body {
   width: 150px;
   background-color: var(--el-color-primary-light-7);
   cursor: pointer;
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
   border: var(--el-color-primary-light-7);
 }
 
@@ -115,6 +161,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 import { ref } from 'vue'
 import Vue from "vue";
 import { useRouter } from 'vue-router';
+import router from '@/router';
 import {
   Menu as IconMenu,
   Setting,
@@ -122,8 +169,16 @@ import {
   Avatar,
   Search,
   PieChart,
+  UserFilled ,
   SwitchButton,
+ WarnTriangleFilled ,
+Briefcase ,
+ Money ,
+Watch ,
+  User ,
+  Histogram,
   Menu,
+  Suitcase ,
 } from '@element-plus/icons-vue'
 
 const isCollapse = ref(true)
@@ -152,5 +207,9 @@ function logout() {
   window.location.href = "/Login";
 }
 
+const onMenuItemClick = (item: string) => {
+    
+    router.push(`${item}`);
 
+}
 </script>

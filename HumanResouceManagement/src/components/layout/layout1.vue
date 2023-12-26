@@ -1,63 +1,42 @@
 <template>
+
   <div class="common-layout"  >
-    <el-container width="300px">
-      <el-aside width="50px" height>
+    <el-container  >
+      <el-aside width="50px">
         <el-row class="tac">
           
     <el-col :span="12">
       <h5 class="mb-2"></h5>
-      <!-- <el-menu
-        default-active="2"
-        class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
-        style="background-color: var(--el-color-primary-light-3);"
-      >
-        <el-sub-menu index="1">
-          <template #title>
-            <el-icon><location /></el-icon>
-            <span>Navigator One</span>
-          </template>
-          <el-menu-item-group title="Group One">
-            <el-menu-item index="1-1">item one</el-menu-item>
-            <el-menu-item index="1-2">item two</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="Group Two">
-            <el-menu-item index="1-3">item three</el-menu-item>
-          </el-menu-item-group>
-          <el-sub-menu index="1-4">
-            <template class="oke" #title>item four </template>
-            <el-menu-item index="1-4-1">item one</el-menu-item>
-          </el-sub-menu>
-        </el-sub-menu>
-        <el-menu-item index="2">
-          <el-icon><icon-menu /></el-icon>
-          <span>Navigator Two</span>
-        </el-menu-item>
-        <el-menu-item index="3" >
-          <el-icon><document /></el-icon>
-          <span>Navigator Three</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <el-icon><setting /></el-icon>
-          <span>Navigator Four</span>
-        </el-menu-item>
-      </el-menu> -->
+      
     </el-col>
   </el-row>
       </el-aside>
-      <el-container>
-        <el-header><div class="login-buttons" >
+      <el-container >
+        <el-header  ><div class="login-buttons" >
   <button class="login-button" @click="LoginForm()">Đăng nhập</button>
   <button class="register-button" @click="RegisterForm()">Đăng ký</button>
 </div></el-header>
-        <el-main>
+        <el-main class="okeemain"> 
           <router-view/>
         </el-main>
-        <el-footer></el-footer>
+        <el-footer style="background-color: #35495e; color: white; text-align: center; height: 183px;">
+      <div style="">
+        <p style="font-size: 18px;">Thông tin liên hệ</p>
+        <p>Địa chỉ: Số 123, Đường ABC, Thành phố XYZ</p>
+        <p>Email: example@email.com</p>
+        <p>Số điện thoại: 123-456-789</p>
+        <!-- Các liên kết mạng xã hội -->
+        <div style="margin-top: 20px;">
+          <a href="#" style="color: white; margin-right: 10px;"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" style="color: white; margin-right: 10px;"><i class="fab fa-twitter"></i></a>
+          <a href="#" style="color: white; margin-right: 10px;"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </el-footer>
       </el-container>
     </el-container>
   </div>
+
 </template>
 <style>
 .login-buttons {
@@ -79,13 +58,26 @@
   padding: 20px 20px;
   transition: background-color 0.3s ease;
 }
+/* div{
+width: 100%;
+height: 100%;
+} */
 
+  #app {
+    width: 100%;
+    height: 100%;
+    
+  }
 .login-button:hover,
 .register-button:hover {
   background-color: #f0f0f0;
 }
 
-
+.okeemain{
+  background-image: url(https://azerp.vn/wp-content/uploads/2021/08/QUAN-ly-nhan-su.jpg);
+background-repeat: no-repeat;
+background-size:cover;
+}
 html, body {
 background-color: aliceblue;
 background-image: url(https://freenice.net/wp-content/uploads/2021/06/hinh-nen-powerpoint-3d.jpg);
@@ -136,9 +128,9 @@ text-align: center;
   background-position: center left;
   padding-left: 20px;
 }
-div, .el-container {
-  height: 100%;
-  width: 100%;
+.common-layout, .el-container {
+  height: 100% !important;
+  width: 100% !important;
 }
 .el-header, .el-main, .el-footer, .el-aside {
   height: 100%;

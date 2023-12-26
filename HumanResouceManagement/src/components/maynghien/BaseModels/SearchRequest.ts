@@ -1,7 +1,7 @@
 // @ts-ignore
-import {Filter} from "../../../../src/components/maynghien/BaseModels/Filter.js";
+import Filter from '../BaseModels/Filter';
 // @ts-ignore
-import {SortByInfo} from "../BaseModels/SortByInfo.js";
+import SortByInfo from "../BaseModels/SortByInfo";
 
 
 export class SearchRequest {
@@ -9,5 +9,5 @@ export class SearchRequest {
     PageIndex: number | undefined;
     PageSize:number |undefined;
     filters:Filter[]|undefined;
-    SortByInfo:SortByInfo|undefined;
+    SortBy:SortByInfo|undefined;
 }

@@ -1,11 +1,11 @@
 <template>
-  <div class="trangchinh z1">
+  <div class="trangchinh z1" >
     <el-form ref="form" :model="employeeData" label-width="120px">
       <el-form-item label="Tên" class="input-name">
         <el-input v-model="employeeData.ten" ></el-input>
       </el-form-item>
       <el-form-item label="Bộ phận" class="input-name">
-        <el-select v-model="bophan">
+        <el-select v-model="bophan" class="input-name">
           <!-- Hiển thị danh sách các bộ phận từ API -->
           <el-option
             v-for="department in departments"
@@ -17,7 +17,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="Chức vụ" class="input-name">
-        <el-select v-model="chucvu">
+        <el-select v-model="chucvu" class="input-name">
           <!-- Hiển thị danh sách các chức vụ từ API -->
           <el-option
             v-for="position in positions"
@@ -28,13 +28,13 @@
         </el-select>
       </el-form-item>
       <el-form-item label="Cấp bậc" >
-        <el-input-number v-model="employeeData.capBat" class="bnt-number" style="width: 248px;"></el-input-number>
+        <el-input-number v-model="employeeData.capBat" class="bnt-number" :min="1" :max="100" :step="1" controls-position="right" style="width: 248px;"></el-input-number>
       </el-form-item>
       <el-form-item label="Mức lương">
-        <el-input-number v-model="employeeData.mucLuong" style="width: 248px;"></el-input-number>
+        <el-input-number v-model="employeeData.mucLuong" :min="0" :max="1000000000" :controls="false" :step="1000000" :precision="0" controls-position="right" class="custom-input-number" style="width: 248px;"></el-input-number>
       </el-form-item>
       <el-form-item label="Hệ số">
-        <el-input-number v-model="employeeData.heSo" style="width: 248px;"></el-input-number>
+        <el-input-number v-model="employeeData.heSo" :min="0" :max="10" :step="0.1" controls-position="right" class="custom-input-number" style="width: 248px;"></el-input-number>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm">Thêm nhân viên</el-button>
@@ -47,6 +47,10 @@
   </template>
 
   <style>
+
+.el-input-number.is-controls-right .el-input-number__decrease {
+  bottom: 15px;
+}
   .z1{
    
     display: inline-block;
@@ -54,25 +58,27 @@
   .el-form-item__label {
     color: rgb(4, 8, 7) !important;
     z-index: 10000;
-    font-size: 12px !important;
+    font-family: cursive;
+    font-size: 14px !important;
     padding: 0 30px 0 0  !important;
   }
   .trangchinh{
-    width: 30%;
+    width: 40%;
   }
   .khunghinh{
-    width: 70%;
-    position: absolute;
+    width: 60%;
+    /* position: absolute; */
     
   }
 .input-name{
-  width: 300px;
+  width: 248px;
 }
 .el-input__inner{
 height: 20px;
 }
 .el-input-number__increase{
-  left: 300px;
+
+  left: 240px;
 }
 </style>
   <script setup lang="ts">

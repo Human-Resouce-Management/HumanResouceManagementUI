@@ -1,21 +1,21 @@
 <template>
-    <el-dialog :model-value="openDialog" :title="(isEdit?'Edit ':'Create ')+ title" class="form-dialog" width="30%" @close="emit('onCloseClicked')" >
+    <el-dialog :model-value="openDialog" :title="(isEdit?'Edit ':'Create ')+ title" class="form-dialog" width="30%" @close="emit('onCloseClicked')">
 
-        <div class="editform" v-if="model != undefined" style="height: 200px; width: 200px;" >
-            <div v-for="column in columns" :key="column.key" style="height: 200px; width: 200px;">
-                <div v-if="(isEdit && column.enableEdit == true) || (!isEdit && column.enableCreate == true)" style="height: 200px; width: 200px;">
+        <div class="editform" v-if="model != undefined">
+            <div v-for="column in columns" :key="column.key">
+                <div v-if="(isEdit && column.enableEdit == true) || (!isEdit && column.enableCreate == true)">
                     <!-- Use double curly braces to bind variable values in templates -->
                     <label>{{ column.label }}</label>
 
                     <el-input v-model="model[column.key]" :placeholder="column.label"
-                        v-if="column.inputType == undefined || column.inputType == 'text'" />
+                        v-if="column.inputType == undefined || column.inputType == 'text' || column.inputType=='number'"  
+                        :type="column.inputType" />
 
 
                     <MnDropdown v-if="column.inputType == 'dropdown'" :column="column" @changed="handleUpdateValue"
                    v-model="model[column.key]"
                      >
                     </MnDropdown>
-                    {{ model[column.key]}}
                 </div>
 
             </div>
@@ -28,7 +28,6 @@
                     Confirm
                 </el-button>
             </span>
-            {{ model }}
         </template>
     </el-dialog>
 </template>
@@ -39,7 +38,7 @@ import { ref, toRefs, computed, watch, inject } from 'vue';
 import { ElMessage, ElInput } from 'element-plus';
 // @ts-ignore
 import { handleAPICreate, handleAPIUpdate } from './Service/BasicAdminService.ts'
-import type { TableColumn } from './Models/TableColumn.ts';
+import type { TableColumn } from './Models/TableColumn';
 import MnDropdown from './Input/MnDropdown.vue';
 // @ts-ignore
 import { SearchDTOItem } from './Models/SearchDTOItem.ts';
@@ -127,5 +126,8 @@ watch(() => props.editItem, () => {
     margin-top: 0;
     margin-right: 0;
     height: 100%;
+}
+.editform .el-select {
+    width: 100%;
 }
 </style>
